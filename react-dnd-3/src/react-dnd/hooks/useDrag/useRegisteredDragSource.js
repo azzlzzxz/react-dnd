@@ -2,8 +2,8 @@
  * @Author: xinxu
  * @Date: 2023-06-18 16:00:40
  * @LastEditors: xinxu
- * @LastEditTime: 2023-06-18 16:54:10
- * @FilePath: /react-dnd/react-dnd-2/src/react-dnd/hooks/useDrag/useRegisteredDragSource.js
+ * @LastEditTime: 2023-06-23 11:06:15
+ * @FilePath: /react-dnd/react-dnd-3/src/react-dnd/hooks/useDrag/useRegisteredDragSource.js
  */
 import { useLayoutEffect } from "react";
 import useDragDropManager from "../useDragDropManager";
@@ -20,7 +20,7 @@ function useRegisteredDragSource(spec, monitor, connector) {
   // 获取管理器
   const manager = useDragDropManager();
   // 创建拖动源实例
-  const dragSource = useDragSource(spec, monitor, manager);
+  const dragSource = useDragSource(spec, monitor, connector);
   console.log(dragSource);
   // 获取拖动源类型
   const itemType = useDragType(spec);
@@ -31,7 +31,7 @@ function useRegisteredDragSource(spec, monitor, connector) {
     monitor.receiveHandlerId(handlerId);
     // 连接器通过唯一表示符handlerId连接DOM和dnd系统
     connector.receiveHandlerId(handlerId);
-    console.log(manager.globalMonitor.registry.draSource);
+    console.log(manager.globalMonitor.registry.dragSource);
     console.log(manager.globalMonitor.registry.types);
   }, [connector, dragSource, itemType, manager, monitor]);
 }

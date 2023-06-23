@@ -31,7 +31,7 @@ function useRegisteredDragSource(spec, monitor, connector) {
     monitor.receiveHandlerId(handlerId);
     // 连接器通过唯一表示符handlerId连接DOM和dnd系统
     connector.receiveHandlerId(handlerId);
-    console.log(manager.globalMonitor.registry.draSource);
+    console.log(manager.globalMonitor.registry.dragSource);
     console.log(manager.globalMonitor.registry.types);
   }, [connector, dragSource, itemType, manager, monitor]);
 }

@@ -12,12 +12,12 @@ import { addSource } from "../actions/registry";
 class HandlerRegistryImpl {
   store;
   types = new Map(); // {handlerId: type}
-  draSource = new Map(); //{handlerId: draSource}
+  dragSource = new Map(); //{handlerId: dragSource}
   constructor(store) {
     this.store = store;
   }
-  addSource(type, draSource) {
-    const handlerId = this.addHandler(HandlerRole.SOURCE, type, draSource);
+  addSource(type, dragSource) {
+    const handlerId = this.addHandler(HandlerRole.SOURCE, type, dragSource);
     this.store.dispatch(addSource(handlerId));
     return handlerId;
   }
@@ -25,7 +25,7 @@ class HandlerRegistryImpl {
     const handlerId = getNextHandler(role);
     this.types.set(handlerId, type); // S0:CARD
     if (role === HandlerRole.SOURCE) {
-      this.draSource.set(handlerId, handler);
+      this.dragSource.set(handlerId, handler);
     }
     return handlerId;
   }

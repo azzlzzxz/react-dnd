@@ -2,8 +2,8 @@
  * @Author: xinxu
  * @Date: 2023-06-18 15:30:11
  * @LastEditors: xinxu
- * @LastEditTime: 2023-06-18 16:46:06
- * @FilePath: /react-dnd/react-dnd-2/src/dnd-core/classes/HandlerRegistryImpl.js
+ * @LastEditTime: 2023-06-23 11:04:40
+ * @FilePath: /react-dnd/react-dnd-3/src/dnd-core/classes/HandlerRegistryImpl.js
  */
 import { HandlerRole } from "../interfaces";
 import { getNextUniqueId } from "../utils";
@@ -12,12 +12,12 @@ import { addSource } from "../actions/registry";
 class HandlerRegistryImpl {
   store;
   types = new Map(); // {handlerId: type}
-  draSource = new Map(); //{handlerId: draSource}
+  dragSource = new Map(); //{handlerId: dragSource}
   constructor(store) {
     this.store = store;
   }
-  addSource(type, draSource) {
-    const handlerId = this.addHandler(HandlerRole.SOURCE, type, draSource);
+  addSource(type, dragSource) {
+    const handlerId = this.addHandler(HandlerRole.SOURCE, type, dragSource);
     this.store.dispatch(addSource(handlerId));
     return handlerId;
   }
@@ -25,7 +25,7 @@ class HandlerRegistryImpl {
     const handlerId = getNextHandler(role);
     this.types.set(handlerId, type); // S0:CARD
     if (role === HandlerRole.SOURCE) {
-      this.draSource.set(handlerId, handler);
+      this.dragSource.set(handlerId, handler);
     }
     return handlerId;
   }
