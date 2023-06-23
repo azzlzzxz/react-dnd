@@ -2,8 +2,8 @@
  * @Author: xinxu
  * @Date: 2023-06-17 16:17:02
  * @LastEditors: xinxu
- * @LastEditTime: 2023-06-21 14:48:32
- * @FilePath: /react-dnd/react-dnd-1/src/Card.js
+ * @LastEditTime: 2023-06-17 22:39:10
+ * @FilePath: /react-dnd/src/Card.js
  */
 import React, { useRef } from "react";
 import { useDrag } from "./react-dnd";
@@ -17,8 +17,9 @@ const style = {
 };
 //useDrag 对应的项目拖动源  DragSource useDrop对应的项目叫放置目标 DropTarget
 export default function Card({ id, text, index, moveCard }) {
-  let ref = useRef();
+  let ref = useRef(); //{current:null} div 生成真实DOM后，会把DOM赋给ref.current
   // let [, drop] = useDrop({
+  //     //一个字符串，这个放置目标只会对指定类型的拖动源发生反应
   //     accept: CARD,
   //     collect: () => ({}),
   //     hover(item, monitor) {
@@ -40,9 +41,10 @@ export default function Card({ id, text, index, moveCard }) {
   //             moveCard(dragIndex, hoverIndex);
   //             item.index = hoverIndex;
   //         }
-  //     }
-  // });
 
+  //     }
+
+  // });
   //useDrag hook提供一种将组件作为拖动源连接 到React DnD系统中的方法
   //DragSource Ref 拖动源的连接器，连接 你的真实DOM和你的React Dnd系统
   let [{ isDragging }, drag] = useDrag({
@@ -58,7 +60,7 @@ export default function Card({ id, text, index, moveCard }) {
   });
 
   const opacity = isDragging ? 0.1 : 1;
-  drag(ref);
+  drag(ref); //drag
   // drop(ref);
 
   return (
