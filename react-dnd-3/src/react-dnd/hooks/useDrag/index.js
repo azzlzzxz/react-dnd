@@ -2,7 +2,7 @@
  * @Author: xinxu
  * @Date: 2023-06-17 22:11:37
  * @LastEditors: xinxu
- * @LastEditTime: 2023-06-23 11:12:23
+ * @LastEditTime: 2023-06-23 11:18:42
  * @FilePath: /react-dnd/react-dnd-3/src/react-dnd/hooks/useDrag/index.js
  */
 import useDragSourceMonitor from "./useDragSourceMonitor";
@@ -21,11 +21,10 @@ function useDrag(spec) {
   console.log("connector", connector);
   // 向dnd系统，注册拖动源的实例：1.创建拖动源实例 2.注册拖动源实例到注册表中
   useRegisteredDragSource(spec, monitor, connector);
-  // return [
-  //   useCollectedProps(spec.collect, monitor, connector),
-  //   useConnectDragSource(connector),
-  // ];
-  return [useCollectedProps(spec.collect, monitor, connector), () => {}];
+  return [
+    useCollectedProps(spec.collect, monitor, connector),
+    useConnectDragSource(connector),
+  ];
 }
 
 export default useDrag;

@@ -2,7 +2,7 @@
  * @Author: xinxu
  * @Date: 2023-06-18 15:30:11
  * @LastEditors: xinxu
- * @LastEditTime: 2023-06-23 11:04:40
+ * @LastEditTime: 2023-06-23 11:31:43
  * @FilePath: /react-dnd/react-dnd-3/src/dnd-core/classes/HandlerRegistryImpl.js
  */
 import { HandlerRole } from "../interfaces";
@@ -28,6 +28,12 @@ class HandlerRegistryImpl {
       this.dragSource.set(handlerId, handler);
     }
     return handlerId;
+  }
+  getSource(sourceId) {
+    return this.dragSource.get(sourceId);
+  }
+  getSourceType(sourceId) {
+    return this.types.get(sourceId);
   }
 }
 

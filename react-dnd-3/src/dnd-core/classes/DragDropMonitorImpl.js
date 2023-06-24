@@ -2,7 +2,7 @@
  * @Author: xinxu
  * @Date: 2023-06-17 22:35:26
  * @LastEditors: xinxu
- * @LastEditTime: 2023-06-23 11:16:51
+ * @LastEditTime: 2023-06-23 11:56:26
  * @FilePath: /react-dnd/react-dnd-3/src/dnd-core/classes/DragDropMonitorImpl.js
  */
 
@@ -25,7 +25,8 @@ class DragDropMonitorImpl {
 
   getSourceId() {
     // 获取当前被拖动的handlerId
-    return "S0";
+    // return "S0";
+    return this.store.getState().dragOperation.sourceId;
   }
 }
 

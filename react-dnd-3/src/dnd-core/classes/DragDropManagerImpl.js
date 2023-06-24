@@ -2,9 +2,12 @@
  * @Author: xinxu
  * @Date: 2023-06-17 21:34:57
  * @LastEditors: xinxu
- * @LastEditTime: 2023-06-18 16:26:13
- * @FilePath: /react-dnd/react-dnd-2/src/dnd-core/classes/DragDropManagerImpl.js
+ * @LastEditTime: 2023-06-23 12:01:52
+ * @FilePath: /react-dnd/react-dnd-3/src/dnd-core/classes/DragDropManagerImpl.js
  */
+
+import { createDragDropActions } from "../actions/dragDrop";
+import { bindActionCreators } from "redux";
 
 // 拖放管理器实现类
 class DragDropManagerImpl {
@@ -18,6 +21,7 @@ class DragDropManagerImpl {
   // 注册后端
   receiveBackend(backend) {
     this.backend = backend;
+    this.backend.setup();
   }
 
   getBackend() {
@@ -31,6 +35,11 @@ class DragDropManagerImpl {
   getRegistry() {
     // 管理器获取监听器里的注册表
     return this.globalMonitor.registry;
+  }
+
+  getActions() {
+    const actions = createDragDropActions(this);
+    return bindActionCreators(actions, this.store.dispatch);
   }
 }
 

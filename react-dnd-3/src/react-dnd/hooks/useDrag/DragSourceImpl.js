@@ -2,8 +2,8 @@
  * @Author: xinxu
  * @Date: 2023-06-18 16:07:16
  * @LastEditors: xinxu
- * @LastEditTime: 2023-06-18 16:07:29
- * @FilePath: /react-dnd/react-dnd-2/src/react-dnd/hooks/useDrag/DragSourceImpl.js
+ * @LastEditTime: 2023-06-23 11:34:51
+ * @FilePath: /react-dnd/react-dnd-3/src/react-dnd/hooks/useDrag/DragSourceImpl.js
  */
 class DragSourceImpl {
   spec;
@@ -13,6 +13,10 @@ class DragSourceImpl {
     this.spec = spec;
     this.monitor = monitor;
     this.connector = connector;
+  }
+
+  beginDrag() {
+    return this.spec.item();
   }
 }
 
